@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Vibration } from 'react-native';
 import { ProgressBar, Colors } from 'react-native-paper';
+import { useKeepAwake } from 'expo-keep-awake';
 import { Countdown } from '../components/Countdown';
 import { TouchableButton } from '../components/TouchableButton';
 import { Timing } from './Timing';
@@ -16,9 +17,18 @@ const PATTERN = [
 ];
 
 export const Timer = ({ focusSubject, clearSubject }) => {
+  useKeepAwake();
+
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
   const [minutes, setMinutes] = useState(0.1);
+
+  const onEnd = (reset) => {
+    Vibration.vibrate(PATTERN);
+    setIsStarted(false);
+    setProgress(1);
+    reset();
+  };
 
   return (
     <View className="w-full h-full">
@@ -27,9 +37,7 @@ export const Timer = ({ focusSubject, clearSubject }) => {
           minutes={minutes}
           isPaused={!isStarted}
           onProgress={setProgress}
-          onEnd={() => {
-            Vibration.vibrate(PATTERN);
-          }}
+          onEnd={onEnd}
         />
         <View className="w-full py-2">
           <Text className="pb-2 mx-auto text-xl font-normal text-white">
