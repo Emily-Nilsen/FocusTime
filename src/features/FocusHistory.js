@@ -11,7 +11,7 @@ export const FocusHistory = ({ history }) => {
     );
 
   const renderItem = ({ item }) => (
-    <Text className="flex flex-row items-center justify-center mb-4 text-lg text-teal-100">
+    <Text className="flex flex-row items-center justify-center mb-4 text-lg text-teal-50">
       <Ionicons name="md-checkmark-circle" size={20} color="#99f6e4" /> {item}
     </Text>
   );
@@ -19,7 +19,7 @@ export const FocusHistory = ({ history }) => {
   return (
     <View className="flex h-full p-4">
       <Text className="pb-6 text-lg font-medium text-white">
-        Things we've focused on:
+        Things I've focused on:
       </Text>
       <FlatList className="" data={history} renderItem={renderItem} />
     </View>
