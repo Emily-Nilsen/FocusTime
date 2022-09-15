@@ -9,7 +9,7 @@ export const Focus = ({ addSubject }) => {
   const [subject, setSubject] = useState(null);
 
   return (
-    <View className="flex w-full h-full p-2 mt-4">
+    <View className="flex w-full h-auto p-4 my-4">
       <View className="flex flex-row">
         <TextInput
           className="grow"

@@ -16,7 +16,7 @@ const PATTERN = [
   1 * ONE_SECOND_IN_MS,
 ];
 
-export const Timer = ({ focusSubject, clearSubject }) => {
+export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   useKeepAwake();
 
   const [isStarted, setIsStarted] = useState(false);
@@ -28,6 +28,7 @@ export const Timer = ({ focusSubject, clearSubject }) => {
     setIsStarted(false);
     setProgress(1);
     reset();
+    onTimerEnd(focusSubject);
   };
 
   return (
