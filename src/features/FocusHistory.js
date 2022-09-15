@@ -19,7 +19,7 @@ export const FocusHistory = ({ history }) => {
   return (
     <View className="flex h-full p-4">
       <Text className="pb-6 text-lg font-medium text-white">
-        Things I've focused on:
+        Things I've focused on today:
       </Text>
       <FlatList className="" data={history} renderItem={renderItem} />
     </View>
